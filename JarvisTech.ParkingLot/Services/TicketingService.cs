@@ -26,7 +26,7 @@ namespace JarvisTech.ParkingLot.Services
         {
             //1.Get the Fee Model for the ParkingLot
             DateTime exitTime = DateTime.Now;
-            var parkingLotDetails = await _repository.GetParkingLotDetails(parkingTicket.parkingLotId);
+            var parkingLotDetails = await _repository.GetParkingLotDetailsAsync(parkingTicket.parkingLotId);
 
             var duration = exitTime.Subtract(parkingTicket.EntryDateTime).TotalMinutes;
 
@@ -40,7 +40,7 @@ namespace JarvisTech.ParkingLot.Services
                 EntryTime = parkingTicket.EntryDateTime,
                 Fee = parkingFee,
                 ExitTime = exitTime,
-                ReceiptNumber = $"R-{Guid.NewGuid().ToString()[..5]}"
+                ReceiptNumber = $"R-{Guid.NewGuid().ToString()[..8]}"
             };
 
             return parkingReceipt;

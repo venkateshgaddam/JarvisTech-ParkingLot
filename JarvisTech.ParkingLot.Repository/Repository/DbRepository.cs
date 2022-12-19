@@ -19,7 +19,7 @@ namespace JarvisTech.ParkingLot.Repository
             dynamoDBContext = new DynamoDBContext(dynamoDbClient);
         }
 
-        public async Task<ParkingLotDetails> GetParkingLotDetails(int parkingLotId)
+        public async Task<ParkingLotDetails> GetParkingLotDetailsAsync(int parkingLotId)
         {
             var parkingLotDeails = await dynamoDBContext.LoadAsync<ParkingLotDetails>(parkingLotId);
 
@@ -27,7 +27,7 @@ namespace JarvisTech.ParkingLot.Repository
         }
 
 
-        public async Task<int> GetMotorCycleAvailableSpots(int parkingLotId)
+        public async Task<int> GetMotorCycleAvailableSpotsAsync(int parkingLotId)
         {
             var document = await dynamoDBContext.LoadAsync<ParkingSpot>(parkingLotId);
 
@@ -36,7 +36,7 @@ namespace JarvisTech.ParkingLot.Repository
             return spots;
         }
 
-        public async Task<int> GetCarAvailableSpots(int parkingLotId)
+        public async Task<int> GetCarAvailableSpotsAsync(int parkingLotId)
         {
             var result = await dynamoDBContext.LoadAsync<ParkingSpot>(parkingLotId);
 
@@ -54,7 +54,7 @@ namespace JarvisTech.ParkingLot.Repository
             return spots;
         }
 
-        public async Task<Spot> GetParkingSpot(int parkingLotId, string vehicleType)
+        public async Task<Spot> GetParkingSpotAsync(int parkingLotId, string vehicleType)
         {
             Table parkingSpot = Table.LoadTable(dynamoDbClient, "ParkingSpot");
             var document = await dynamoDBContext.LoadAsync<ParkingSpot>(parkingLotId);
@@ -63,14 +63,14 @@ namespace JarvisTech.ParkingLot.Repository
         }
 
 
-        public async Task<Spot> GetCurrentParkingSpot(int parkingLotId, int spotId, string vehicleType)
+        public async Task<Spot> GetCurrentParkingSpotAsync(int parkingLotId, int spotId, string vehicleType)
         {
             var document = await dynamoDBContext.LoadAsync<ParkingSpot>(parkingLotId);
             var spot = document.Spots.FirstOrDefault(a => a.IsReserved && a.Id == spotId && a.Type.ToLower() == vehicleType.ToLower());
             return spot;
         }
 
-        public async Task<bool> ReserveParkingSpot(int parkingLotId, Spot spot)
+        public async Task<bool> ReserveParkingSpotAsync(int parkingLotId, Spot spot)
         {
             // Update Status.
             Table parkingSpot = Table.LoadTable(dynamoDbClient, "ParkingSpot");
@@ -85,7 +85,7 @@ namespace JarvisTech.ParkingLot.Repository
             return result.IsReserved;
         }
 
-        public async Task<bool> ReleaseParkingSpot(int parkingLotId, Spot spot)
+        public async Task<bool> ReleaseParkingSpotAsync(int parkingLotId, Spot spot)
         {
             // Update Status.
             var document = await dynamoDBContext.LoadAsync<ParkingSpot>(parkingLotId);
@@ -113,7 +113,7 @@ namespace JarvisTech.ParkingLot.Repository
                 parkingLotId = parkingLotId,
                 EntryDateTime = timeOfEntry,
                 SpotNumber = spotId,
-                TicketNumber = Guid.NewGuid().ToString()[..5].ToUpper()
+                TicketNumber = Guid.NewGuid().ToString()[..8].ToUpper()
             };
             await dynamoDBContext.SaveAsync(parkingTicket);
 

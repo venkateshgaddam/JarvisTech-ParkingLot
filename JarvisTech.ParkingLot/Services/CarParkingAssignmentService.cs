@@ -14,31 +14,31 @@ namespace JarvisTech.ParkingLot.Services
 
         public async Task<Spot> GetCurrentParkingSpotDetails(int parkingLotId, int spotId)
         {
-            var result = await _repository.GetCurrentParkingSpot(parkingLotId, spotId, VehicleType.MotorCycle.ToString());
+            var result = await _repository.GetCurrentParkingSpotAsync(parkingLotId, spotId, VehicleType.MotorCycle.ToString());
             return result;
         }
 
         public async Task<int> GetAvailableParkingSpots(int parkingLotId)
         {
-            var result = await _repository.GetCarAvailableSpots(parkingLotId);
+            var result = await _repository.GetCarAvailableSpotsAsync(parkingLotId);
             return result;
         }
 
         public async Task<bool> ReserveParkingSpot(int parkingLotId, Spot parkingSpot)
         {
-            var isReserved = await _repository.ReserveParkingSpot(parkingLotId, parkingSpot);
+            var isReserved = await _repository.ReserveParkingSpotAsync(parkingLotId, parkingSpot);
             return isReserved;
         }
 
         public async Task<bool> ReleaseParkingSpot(int parkingLotId, Spot parkingSpot)
         {
-            var result = await _repository.ReleaseParkingSpot(parkingLotId, parkingSpot);
+            var result = await _repository.ReleaseParkingSpotAsync(parkingLotId, parkingSpot);
             return result;
         }
 
         public async Task<Spot> GetLatestAvailableSpot(int parkingLotId)
         {
-            var result = await _repository.GetParkingSpot(parkingLotId, VehicleType.Car.ToString());
+            var result = await _repository.GetParkingSpotAsync(parkingLotId, VehicleType.Car.ToString());
             return result;
         }
     }

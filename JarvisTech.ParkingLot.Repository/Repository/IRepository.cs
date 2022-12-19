@@ -6,21 +6,21 @@ namespace JarvisTech.ParkingLot.Repository
 {
     public interface IRepository
     {
-        Task<ParkingLotDetails> GetParkingLotDetails(int parkingLotId);
+        Task<ParkingLotDetails> GetParkingLotDetailsAsync(int parkingLotId);
 
-        Task<int> GetMotorCycleAvailableSpots(int parkingLotId);
+        Task<int> GetMotorCycleAvailableSpotsAsync(int parkingLotId);
 
-        Task<int> GetCarAvailableSpots(int parkingLotId);
+        Task<int> GetCarAvailableSpotsAsync(int parkingLotId);
 
         Task<int> GetTruckAvailableSpots(int parkingLotId);
 
-        Task<Spot> GetParkingSpot(int parkingLotId, string vehicleType);
+        Task<Spot> GetParkingSpotAsync(int parkingLotId, string vehicleType);
 
-        Task<Spot> GetCurrentParkingSpot(int parkingLotId, int spotId, string vehicleType);
+        Task<Spot> GetCurrentParkingSpotAsync(int parkingLotId, int spotId, string vehicleType);
 
-        Task<bool> ReserveParkingSpot(int parkingLotId, Spot spot);
+        Task<bool> ReserveParkingSpotAsync(int parkingLotId, Spot spot);
 
-        Task<bool> ReleaseParkingSpot(int parkingLotId, Spot spot);
+        Task<bool> ReleaseParkingSpotAsync(int parkingLotId, Spot spot);
 
 
         Task<ParkingTicket> GenerateParkingTicketAsync(int spotId, int parkingLotId, DateTime timeOfEntry);
