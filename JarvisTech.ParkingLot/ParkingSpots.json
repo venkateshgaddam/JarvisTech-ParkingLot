@@ -1,0 +1,33 @@
+{
+  "ParkingLotId": 1,
+  "Spots": [
+    {
+      "IsReserved": "false",
+      "Id": 1
+    },
+    {
+      "IsReserved": "false",
+      "Id": 2
+    },
+    {
+      "IsReserved": "false",
+      "Id": 3
+    },
+    {
+      "IsReserved": "false",
+      "Id": 4
+    },
+    {
+      "IsReserved": "false",
+      "Id": 5
+    },
+    {
+      "IsReserved": "false",
+      "Id": 6
+    },
+    {
+      "IsReserved": "false",
+      "Id": 7
+    }
+  ]
+}

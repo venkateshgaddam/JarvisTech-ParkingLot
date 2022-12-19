@@ -1,0 +1,39 @@
+{
+  "Mall": {
+    "Motorcycle": {
+      "Interval": {
+        "MinHrs": 1,
+        "MaxHrs": 0,
+        "Fee": 10
+      }
+    },
+    "Car": {
+      "Interval": {
+        "MinHrs": 1,
+        "MaxHrs": 0,
+        "Fee": 20
+      }
+    },
+    "SUV": {
+      "Interval": {
+        "MinHrs": 1,
+        "MaxHrs": 0,
+        "Fee": 20
+      }
+    },
+    "Bus": {
+      "Interval": {
+        "MinHrs": 1,
+        "MaxHrs": 0,
+        "Fee": 50
+      }
+    },
+    "Truck": {
+      "Interval": {
+        "MinHrs": 1,
+        "MaxHrs": 0,
+        "Fee": 50
+      }
+    }
+  }
+}
