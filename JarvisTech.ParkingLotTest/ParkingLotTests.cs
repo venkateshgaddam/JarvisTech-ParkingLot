@@ -61,7 +61,7 @@ namespace JarvisTech.ParkingLotTest
 
         [Theory]
         [InlineData("scooter")]
-        public async Task ParkVehicle(string vehicleType)
+        public async Task ParkScooter(string vehicleType)
         {
             var result = await ParkingBiz.ParkVehicle(vehicleType);
 
